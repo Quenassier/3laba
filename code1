@@ -1,0 +1,58 @@
+#include <iostream>
+#include <fstream>// функционал для считывания данных
+#include <cmath>
+using namespace std;
+
+double log(double a, double b)
+{
+    return log(b) / log(a);
+}
+
+
+
+int main()
+{
+    setlocale(LC_ALL, "ru");
+
+    ifstream file1;// для чтения
+    ofstream file2("R.txt");
+    ofstream file3("stepen.txt");// для записи
+
+
+    double R;
+    double a = 3;
+   
+
+
+        cout << "Введите значение R: ";
+        cin >> R;
+
+        file2 << R;
+        file2.close();
+
+        file1.open("R.txt");
+        if (file1.fail())
+        {
+            cout << "Не удалось открыть файл";
+            return 1;
+        }
+
+        file1 >> R;
+        file1.close();
+
+        file3 << "X = " << log(a, R);
+        file3.close();
+
+        if (R <= 0)
+        {
+           cout << "Введите положительное значение R";
+        }
+
+
+      cout << "x = " << log(a, R) << "Результат записан в stepen.txt";
+
+  
+
+    return 0;
+
+}
